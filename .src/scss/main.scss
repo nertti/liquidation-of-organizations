@@ -1,0 +1,441 @@
+.hi__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 0 0;
+  @include laptop-S {
+    display: block;
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  @include tablet-S {
+    padding: 80px 0 0;
+  }
+
+  .hi__txt {
+    padding: 0 0 50px;
+
+    .hi__title {
+      font-weight: 500;
+      font-size: 24px;
+      color: $txt;
+    }
+
+    .hi__name {
+      font-weight: bold;
+      font-size: 60px;
+      color: $title;
+      padding: 30px 0;
+      @include laptop-M {
+        font-size: 58px;
+      }
+      @include laptop-S {
+        font-size: 48px;
+      }
+    }
+
+    .hi__desc {
+      font-size: 24px;
+      color: $txt;
+      padding: 10px 0 50px;
+      @include laptop-S {
+        padding: 5px 0 30px;
+      }
+    }
+  }
+
+  .hi__img {
+    position: relative;
+    //z-index: 51;
+    //top: -60px;
+    margin-top: 20px;
+
+    img {
+      border-radius: 25px;
+    }
+
+    @include laptop-S {
+      display: none;
+    }
+  }
+}
+
+.services {
+  padding-bottom: 70px;
+
+  .services__head {
+    @include laptop-S {
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .services__title {
+      max-width: 250px;
+      padding: 10px 0 50px;
+      letter-spacing: 1.4px;
+    }
+  }
+
+  .services__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    @include laptop-S {
+      flex-direction: column;
+    }
+
+    .services__item {
+      max-width: 350px;
+      width: 100%;
+      @include laptop-S {
+        max-width: 450px;
+      }
+
+      .services__name {
+        display: flex;
+        align-items: center;
+        @include tablet-XS {
+          padding: 10px 0;
+          position: relative;
+          cursor: pointer;
+          &:before,
+          &:after {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background-color: $title;
+            position: absolute;
+            top: 40px;
+            transition: all 0.4s ease 0s;
+            border-radius: 10px;
+          }
+          &:before {
+            transform: rotate(40deg);
+            right: 16px;
+          }
+          &:after {
+            transform: rotate(-40deg);
+            right: 1px;
+          }
+          &.active:before,
+          &.active:after {
+            background-color: $purple;
+          }
+          &.active:after {
+            transform: rotate(40deg);
+          }
+          &.active:before {
+            transform: rotate(-40deg);
+          }
+        }
+
+        .services__icon {
+          position: relative;
+
+          img {
+            color: $title;
+            max-width: 50px;
+          }
+
+          #i1 {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+          }
+          #i2 {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+          }
+          #i3 {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+          }
+          #i4 {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+          }
+          #i5 {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+          }
+          #i6 {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+          }
+          #i7 {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+          }
+          #i8 {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+          }
+          #i9 {
+            position: absolute;
+            top: 13px;
+            left: 13px;
+          }
+        }
+
+        .services__txt {
+          @include mobile-M {
+            font-size: 18px;
+          }
+          @include mobile-S {
+            font-size: 16px;
+          }
+          padding-left: 20px;
+          padding-right: 40px;
+          font-weight: 500;
+          font-size: 22px;
+          color: $title;
+        }
+      }
+
+      .services__description {
+        display: none;
+        padding: 20px 0;
+        font-size: 18px;
+        line-height: 32px;
+        color: $txt;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+.advantages {
+  padding-bottom: 70px;
+
+  .advantages__head {
+    @include laptop-S {
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .advantages__title {
+      max-width: 500px;
+      padding: 10px 0 40px;
+    }
+  }
+
+  .advantages__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    @include laptop-S {
+      grid-template-columns: 1fr;
+      max-width: 450px;
+      margin: 0 auto;
+    }
+  }
+
+  .advantages__item {
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba($purple, 0.06);
+    border: 1px solid rgba($purple, 0.15);
+
+    .advantages__item-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: $title;
+      margin-bottom: 15px;
+    }
+
+    .advantages__item-text {
+      font-size: 16px;
+      line-height: 28px;
+      color: $txt;
+    }
+  }
+}
+
+.feedback {
+  padding-bottom: 70px;
+
+  .feedback__head {
+    @include laptop-S {
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .feedback__title {
+      max-width: 600px;
+      padding: 10px 0 15px;
+    }
+
+    .feedback__subtitle {
+      font-size: 18px;
+      line-height: 28px;
+      color: $txt;
+      max-width: 600px;
+      padding-bottom: 30px;
+    }
+  }
+
+  .feedback__form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .feedback__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    @include tablet-S {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .feedback__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-size: 16px;
+      font-weight: 500;
+      color: $title;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      color: $title;
+      background: #fff;
+      border: 1px solid rgba($purple, 0.3);
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.3s;
+
+      &:focus {
+        border-color: $purple;
+      }
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+  }
+
+  .feedback__submit {
+    max-width: 300px;
+    border: none;
+    margin-top: 10px;
+  }
+
+  .feedback__status {
+    font-size: 16px;
+    min-height: 24px;
+
+    &_success {
+      color: #2e7d32;
+    }
+
+    &_error {
+      color: #c62828;
+    }
+  }
+
+  .feedback__privacy {
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba($txt, 0.8);
+  }
+}
+
+.contact-me {
+  padding-bottom: 70px;
+  min-width: 0;
+
+  .contact-me__head {
+    max-width: 450px;
+    @include laptop-S {
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .contact-me__title {
+      @include mobile-L {
+        font-size: 30px;
+      }
+      @include mobile-S {
+        font-size: 25px;
+      }
+      width: 100%;
+      text-align: justify;
+      padding: 15px 0;
+      color: $title;
+    }
+  }
+
+  .contact-me__content {
+    padding: 20px 0;
+
+    .contact-me__email {
+      text-align: center;
+      font-size: 20px;
+      color: $title;
+      margin-top: 20px;
+    }
+
+    .contact-me__icons {
+      display: flex;
+      justify-content: space-around;
+
+      @include tablet-S {
+        flex-wrap: wrap;
+        max-width: 390px;
+        margin: 0 auto;
+      }
+
+      .contact-me__icon {
+        position: relative;
+        max-width: 100px;
+        width: 100%;
+
+        @include tablet-S {
+          &:last-child {
+            top: 30px;
+          }
+        }
+
+        .icon {
+          max-width: 100%;
+        }
+
+        &.icon_up {
+          top: 30px;
+        }
+
+        .inner_icon {
+          position: absolute;
+          max-width: 50px;
+          width: 100%;
+          top: 23px;
+          left: 25px;
+        }
+      }
+    }
+  }
+}

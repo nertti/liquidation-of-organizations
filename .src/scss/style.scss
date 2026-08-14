@@ -1,0 +1,67 @@
+@import "mixins.scss";
+@import "normalize.scss";
+@import "blue.scss";
+
+.wrapper{
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: $bgc;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  @include laptop-M{
+    max-width: calc(100% - 40px);
+  }
+}
+
+.button{
+  max-width: 300px;
+  width: 100%;
+  background: $purple;
+  border-radius: 100px;
+  text-align: center;
+  padding: 20px 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  color: $white_txt;
+  cursor: pointer;
+}
+
+.name{
+  font-size: 18px;
+  color: $purple;
+}
+
+.line{
+  border: 1px solid $purple;
+  width: 50px;
+  margin: 10px 0;
+  background-color: $purple;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 36px;
+  color: $title;
+  line-height: 45px;
+}
+
+
+@import "slider.scss";
+
+@import "header.scss";
+
+@import "main.scss";
+
+@import "footer.scss";
+
+@import "scrollBar.scss";
+
