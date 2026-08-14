@@ -73,26 +73,52 @@ const CERTIFICATES_SLIDER_THRESHOLD = 4;
 
     const modalImage = modal.querySelector('.certificates-modal__image');
     const closeBtn = modal.querySelector('.certificates-modal__close');
+    const overlay = modal.querySelector('.certificates-modal__overlay');
+    const fixedElements = document.querySelectorAll('.nav');
+
+    function getScrollbarWidth() {
+        return window.innerWidth - document.documentElement.clientWidth;
+    }
+
+    function lockScroll() {
+        const scrollbarWidth = getScrollbarWidth();
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+        fixedElements.forEach((el) => {
+            el.style.paddingRight = `${scrollbarWidth}px`;
+        });
+        document.body.classList.add('lock');
+    }
+
+    function unlockScroll() {
+        document.body.classList.remove('lock');
+        document.body.style.paddingRight = '';
+        fixedElements.forEach((el) => {
+            el.style.paddingRight = '';
+        });
+    }
 
     function openModal(src, alt) {
         modalImage.src = src;
         modalImage.alt = alt || '';
+        lockScroll();
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('lock');
     }
 
     function closeModal() {
         modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('lock');
+        unlockScroll();
         modalImage.removeAttribute('src');
     }
 
     closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
 
     grid.addEventListener('click', (e) => {
-        const img = e.target.closest('.certificates__item img');
+        const item = e.target.closest('.certificates__item');
+        if (!item) return;
+        const img = item.querySelector('img');
         if (!img) return;
         openModal(img.src, img.alt);
     });

@@ -178,6 +178,10 @@ h6 {
   font-size: 20px;
 }
 
+body.lock {
+  overflow: hidden;
+}
+
 .nertti {
   font-family: "Caveat", cursive;
   font-size: 40px;
@@ -345,120 +349,185 @@ h6 {
   border-radius: 25px;
 }
 
-.services {
+.certificates {
   padding-bottom: 70px;
 }
 
-.services .services__head .services__title {
-  max-width: 250px;
-  padding: 10px 0 50px;
-  letter-spacing: 1.4px;
+.certificates .certificates__head .certificates__title {
+  max-width: 500px;
+  padding: 10px 0 40px;
 }
 
-.services .services__content {
+.certificates .certificates__grid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 30px;
 }
 
-.services .services__content .services__item {
-  max-width: 350px;
+.certificates .certificates__grid.certificates__slider {
+  display: block;
+  max-width: 100%;
+  padding-bottom: 50px;
+  overflow: hidden;
+}
+
+.certificates .certificates__grid.certificates__slider .swiper-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: auto;
+}
+
+.certificates .certificates__grid.certificates__slider .swiper-button-prev:after,
+.certificates .certificates__grid.certificates__slider .swiper-button-next:after {
+  color: #7286d8;
+}
+
+.certificates .certificates__grid.certificates__slider .swiper-pagination-bullet {
+  border-radius: 0;
+  width: 30px;
+  height: 5px;
+  background-color: #7286d8;
+}
+
+.certificates .certificates__item {
+  width: 220px;
+  height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(114, 134, 216, 0.06);
+  border: 1px solid rgba(114, 134, 216, 0.15);
+  -webkit-box-shadow: 0 4px 20px rgba(64, 64, 64, 0.08);
+          box-shadow: 0 4px 20px rgba(64, 64, 64, 0.08);
+  -webkit-transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.certificates .certificates__item:hover {
+  -webkit-transform: translateY(-4px);
+      -ms-transform: translateY(-4px);
+          transform: translateY(-4px);
+  -webkit-box-shadow: 0 8px 30px rgba(114, 134, 216, 0.15);
+          box-shadow: 0 8px 30px rgba(114, 134, 216, 0.15);
+}
+
+.certificates .certificates__item img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
+  display: block;
+  pointer-events: none;
 }
 
-.services .services__content .services__item .services__name {
+.certificates-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 60px 20px 20px;
+}
+
+.certificates-modal.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.certificates-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.certificates-modal__content {
+  position: relative;
+  z-index: 1;
+  max-width: 90vw;
+  max-height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.services .services__content .services__item .services__name .services__icon {
-  position: relative;
+.certificates-modal__image {
+  max-width: 90vw;
+  max-height: 85vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
-.services .services__content .services__item .services__name .services__icon img {
-  color: #404040;
-  max-width: 50px;
+.certificates-modal__close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.services .services__content .services__item .services__name .services__icon #i1 {
+.certificates-modal__close::before,
+.certificates-modal__close::after {
+  content: "";
   position: absolute;
-  top: 13px;
-  left: 13px;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 
-.services .services__content .services__item .services__name .services__icon #i2 {
-  position: absolute;
-  top: 13px;
-  left: 13px;
+.certificates-modal__close::before {
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+      -ms-transform: translate(-50%, -50%) rotate(45deg);
+          transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.services .services__content .services__item .services__name .services__icon #i3 {
-  position: absolute;
-  top: 13px;
-  left: 13px;
+.certificates-modal__close::after {
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+      -ms-transform: translate(-50%, -50%) rotate(-45deg);
+          transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.services .services__content .services__item .services__name .services__icon #i4 {
-  position: absolute;
-  top: 13px;
-  left: 13px;
-}
-
-.services .services__content .services__item .services__name .services__icon #i5 {
-  position: absolute;
-  top: 13px;
-  left: 13px;
-}
-
-.services .services__content .services__item .services__name .services__icon #i6 {
-  position: absolute;
-  top: 13px;
-  left: 13px;
-}
-
-.services .services__content .services__item .services__name .services__icon #i7 {
-  position: absolute;
-  top: 13px;
-  left: 13px;
-}
-
-.services .services__content .services__item .services__name .services__icon #i8 {
-  position: absolute;
-  top: 13px;
-  left: 13px;
-}
-
-.services .services__content .services__item .services__name .services__icon #i9 {
-  position: absolute;
-  top: 13px;
-  left: 13px;
-}
-
-.services .services__content .services__item .services__name .services__txt {
-  padding-left: 20px;
-  padding-right: 40px;
-  font-weight: 500;
-  font-size: 22px;
-  color: #404040;
-}
-
-.services .services__content .services__item .services__description {
-  display: none;
-  padding: 20px 0;
-  font-size: 18px;
-  line-height: 32px;
-  color: #666666;
-  letter-spacing: 1px;
+.certificates-modal__close:hover::before,
+.certificates-modal__close:hover::after {
+  opacity: 0.75;
 }
 
 .advantages {
@@ -744,21 +813,15 @@ h6 {
     display: none;
   }
 
-  .services .services__head {
+  .certificates .certificates__head {
     max-width: 450px;
     width: 100%;
     margin: 0 auto;
   }
 
-  .services .services__content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-
-  .services .services__content .services__item {
+  .certificates .certificates__grid {
     max-width: 450px;
+    margin: 0 auto;
   }
 
   .advantages .advantages__head {
@@ -801,6 +864,11 @@ h6 {
     padding: 80px 0 0;
   }
 
+  .certificates .certificates__item {
+    width: 180px;
+    height: 260px;
+  }
+
   .feedback .feedback__row {
     grid-template-columns: 1fr;
   }
@@ -818,10 +886,6 @@ h6 {
 }
 
 @media screen and (max-width: 500px) {
-  body.lock {
-    overflow: hidden;
-  }
-
   .nertti {
     display: block;
     z-index: 5;
@@ -921,56 +985,6 @@ h6 {
     color: #fff;
     font-size: 22px;
   }
-
-  .services .services__content .services__item .services__name {
-    padding: 10px 0;
-    position: relative;
-    cursor: pointer;
-  }
-
-  .services .services__content .services__item .services__name:before,
-  .services .services__content .services__item .services__name:after {
-    content: "";
-    width: 20px;
-    height: 2px;
-    background-color: #404040;
-    position: absolute;
-    top: 40px;
-    -webkit-transition: all 0.4s ease 0s;
-    transition: all 0.4s ease 0s;
-    border-radius: 10px;
-  }
-
-  .services .services__content .services__item .services__name:before {
-    -webkit-transform: rotate(40deg);
-        -ms-transform: rotate(40deg);
-            transform: rotate(40deg);
-    right: 16px;
-  }
-
-  .services .services__content .services__item .services__name:after {
-    -webkit-transform: rotate(-40deg);
-        -ms-transform: rotate(-40deg);
-            transform: rotate(-40deg);
-    right: 1px;
-  }
-
-  .services .services__content .services__item .services__name.active:before,
-  .services .services__content .services__item .services__name.active:after {
-    background-color: #7286d8;
-  }
-
-  .services .services__content .services__item .services__name.active:after {
-    -webkit-transform: rotate(40deg);
-        -ms-transform: rotate(40deg);
-            transform: rotate(40deg);
-  }
-
-  .services .services__content .services__item .services__name.active:before {
-    -webkit-transform: rotate(-40deg);
-        -ms-transform: rotate(-40deg);
-            transform: rotate(-40deg);
-  }
 }
 
 @media screen and (max-width: 425px) {
@@ -985,16 +999,13 @@ h6 {
 }
 
 @media screen and (max-width: 375px) {
-  .services .services__content .services__item .services__name .services__txt {
-    font-size: 18px;
+  .certificates .certificates__item {
+    width: 150px;
+    height: 220px;
   }
 }
 
 @media screen and (max-width: 325px) {
-  .services .services__content .services__item .services__name .services__txt {
-    font-size: 16px;
-  }
-
   .contact-me .contact-me__head .contact-me__title {
     font-size: 25px;
   }
