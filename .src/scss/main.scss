@@ -61,154 +61,168 @@
   }
 }
 
-.services {
+.certificates {
   padding-bottom: 70px;
 
-  .services__head {
+  .certificates__head {
     @include laptop-S {
       max-width: 450px;
       width: 100%;
       margin: 0 auto;
     }
 
-    .services__title {
-      max-width: 250px;
-      padding: 10px 0 50px;
-      letter-spacing: 1.4px;
+    .certificates__title {
+      max-width: 500px;
+      padding: 10px 0 40px;
     }
   }
 
-  .services__content {
+  .certificates__grid {
     display: flex;
-    justify-content: space-between;
-    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
     @include laptop-S {
-      flex-direction: column;
+      max-width: 450px;
+      margin: 0 auto;
     }
 
-    .services__item {
-      max-width: 350px;
-      width: 100%;
-      @include laptop-S {
-        max-width: 450px;
-      }
+    &.certificates__slider {
+      display: block;
+      max-width: 100%;
+      padding-bottom: 50px;
+      overflow: hidden;
 
-      .services__name {
+      .swiper-slide {
         display: flex;
-        align-items: center;
-        @include tablet-XS {
-          padding: 10px 0;
-          position: relative;
-          cursor: pointer;
-          &:before,
-          &:after {
-            content: '';
-            width: 20px;
-            height: 2px;
-            background-color: $title;
-            position: absolute;
-            top: 40px;
-            transition: all 0.4s ease 0s;
-            border-radius: 10px;
-          }
-          &:before {
-            transform: rotate(40deg);
-            right: 16px;
-          }
-          &:after {
-            transform: rotate(-40deg);
-            right: 1px;
-          }
-          &.active:before,
-          &.active:after {
-            background-color: $purple;
-          }
-          &.active:after {
-            transform: rotate(40deg);
-          }
-          &.active:before {
-            transform: rotate(-40deg);
-          }
-        }
-
-        .services__icon {
-          position: relative;
-
-          img {
-            color: $title;
-            max-width: 50px;
-          }
-
-          #i1 {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-          }
-          #i2 {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-          }
-          #i3 {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-          }
-          #i4 {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-          }
-          #i5 {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-          }
-          #i6 {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-          }
-          #i7 {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-          }
-          #i8 {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-          }
-          #i9 {
-            position: absolute;
-            top: 13px;
-            left: 13px;
-          }
-        }
-
-        .services__txt {
-          @include mobile-M {
-            font-size: 18px;
-          }
-          @include mobile-S {
-            font-size: 16px;
-          }
-          padding-left: 20px;
-          padding-right: 40px;
-          font-weight: 500;
-          font-size: 22px;
-          color: $title;
-        }
+        justify-content: center;
+        height: auto;
       }
 
-      .services__description {
-        display: none;
-        padding: 20px 0;
-        font-size: 18px;
-        line-height: 32px;
-        color: $txt;
-        letter-spacing: 1px;
+      .swiper-button-prev:after,
+      .swiper-button-next:after {
+        color: $purple;
       }
+
+      .swiper-pagination-bullet {
+        border-radius: 0;
+        width: 30px;
+        height: 5px;
+        background-color: $purple;
+      }
+    }
+  }
+
+  .certificates__item {
+    width: 220px;
+    height: 320px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba($purple, 0.06);
+    border: 1px solid rgba($purple, 0.15);
+    box-shadow: 0 4px 20px rgba($title, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba($purple, 0.15);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      pointer-events: none;
+    }
+
+    @include tablet-S {
+      width: 180px;
+      height: 260px;
+    }
+
+    @include mobile-M {
+      width: 150px;
+      height: 220px;
+    }
+  }
+}
+
+.certificates-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 20px;
+
+  &.active {
+    display: flex;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  &__close {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 28px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover::before,
+    &:hover::after {
+      opacity: 0.75;
     }
   }
 }
