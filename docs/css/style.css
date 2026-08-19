@@ -267,7 +267,6 @@ body.lock {
 .nav .nav__row .nav__menu {
   position: relative;
   z-index: 4;
-  max-width: 650px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -337,7 +336,7 @@ body.lock {
 .hi__row .hi__txt .hi__desc {
   font-size: 24px;
   color: #666666;
-  padding: 10px 0 50px;
+  padding: 0 0 30px;
 }
 
 .hi__row .hi__img {
@@ -347,6 +346,104 @@ body.lock {
 
 .hi__row .hi__img img {
   border-radius: 25px;
+}
+
+.liquidation {
+  padding-bottom: 70px;
+}
+
+.liquidation .liquidation__head .liquidation__title {
+  max-width: 600px;
+  padding: 10px 0 15px;
+}
+
+.liquidation .liquidation__head .liquidation__subtitle {
+  max-width: 600px;
+  padding-bottom: 30px;
+  font-size: 18px;
+  line-height: 28px;
+  color: #666666;
+}
+
+.liquidation .liquidation__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.liquidation .liquidation__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 25px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(114, 134, 216, 0.06);
+  border: 1px solid rgba(114, 134, 216, 0.15);
+  -webkit-transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+}
+
+.liquidation .liquidation__item:hover {
+  -webkit-transform: translateY(-4px);
+      -ms-transform: translateY(-4px);
+          transform: translateY(-4px);
+  -webkit-box-shadow: 0 8px 30px rgba(114, 134, 216, 0.12);
+          box-shadow: 0 8px 30px rgba(114, 134, 216, 0.12);
+}
+
+.liquidation .liquidation__number {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+  color: #7286d8;
+  opacity: 0.7;
+}
+
+.liquidation .liquidation__content h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #404040;
+}
+
+.liquidation .liquidation__content p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 28px;
+  color: #666666;
+}
+
+.liquidation .liquidation__notice {
+  margin-top: 50px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(114, 134, 216, 0.06);
+  border: 1px solid rgba(114, 134, 216, 0.15);
+}
+
+.liquidation .liquidation__notice .liquidation__notice-title {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #404040;
+}
+
+.liquidation .liquidation__notice p {
+  margin: 0 0 15px;
+  font-size: 16px;
+  line-height: 28px;
+  color: #666666;
+}
+
+.liquidation .liquidation__notice p:last-child {
+  margin-bottom: 0;
 }
 
 .certificates {
@@ -400,8 +497,8 @@ body.lock {
 }
 
 .certificates .certificates__item {
-  width: 220px;
-  height: 320px;
+  width: 550px;
+  height: 400px;
   border-radius: 16px;
   overflow: hidden;
   background: rgba(114, 134, 216, 0.06);
@@ -700,30 +797,57 @@ body.lock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
 }
 
-.contact-me .contact-me__content .contact-me__icons .contact-me__icon {
+.contact-me .contact-me__content .contact-me__icon {
   position: relative;
-  max-width: 100px;
-  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100px;
+  height: 100px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100px;
+          flex: 0 0 100px;
 }
 
-.contact-me .contact-me__content .contact-me__icons .contact-me__icon .icon {
-  max-width: 100%;
+.contact-me .contact-me__content .contact-me__icon:hover .contact-me__inner {
+  -webkit-transform: scale(1.08);
+      -ms-transform: scale(1.08);
+          transform: scale(1.08);
 }
 
-.contact-me .contact-me__content .contact-me__icons .contact-me__icon.icon_up {
-  top: 30px;
-}
-
-.contact-me .contact-me__content .contact-me__icons .contact-me__icon .inner_icon {
+.contact-me .contact-me__content .contact-me__circle {
   position: absolute;
-  max-width: 50px;
+  inset: 0;
   width: 100%;
-  top: 23px;
-  left: 25px;
+  height: 100%;
+}
+
+.contact-me .contact-me__content .contact-me__inner {
+  position: relative;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 
 .footer {
@@ -813,6 +937,18 @@ body.lock {
     display: none;
   }
 
+  .liquidation .liquidation__head {
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .liquidation .liquidation__list {
+    grid-template-columns: 1fr;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
   .certificates .certificates__head {
     max-width: 450px;
     width: 100%;
@@ -820,7 +956,7 @@ body.lock {
   }
 
   .certificates .certificates__grid {
-    max-width: 450px;
+    max-width: 900px;
     margin: 0 auto;
   }
 
@@ -864,9 +1000,27 @@ body.lock {
     padding: 80px 0 0;
   }
 
+  .liquidation .liquidation__item {
+    padding: 22px;
+    gap: 18px;
+  }
+
+  .liquidation .liquidation__content h3 {
+    font-size: 18px;
+  }
+
+  .liquidation .liquidation__content p {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .liquidation .liquidation__notice {
+    margin-top: 30px;
+    padding: 22px;
+  }
+
   .certificates .certificates__item {
-    width: 180px;
-    height: 260px;
+    height: 300px;
   }
 
   .feedback .feedback__row {
@@ -878,10 +1032,7 @@ body.lock {
         flex-wrap: wrap;
     max-width: 390px;
     margin: 0 auto;
-  }
-
-  .contact-me .contact-me__content .contact-me__icons .contact-me__icon:last-child {
-    top: 30px;
+    gap: 20px;
   }
 }
 
@@ -1000,8 +1151,7 @@ body.lock {
 
 @media screen and (max-width: 375px) {
   .certificates .certificates__item {
-    width: 150px;
-    height: 220px;
+    height: 250px;
   }
 }
 
