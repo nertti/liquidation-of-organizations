@@ -334,7 +334,7 @@ body.lock {
 }
 
 .hi__row .hi__txt .hi__desc {
-  font-size: 24px;
+  font-size: 20px;
   color: #666666;
   padding: 0 0 30px;
 }
@@ -354,51 +354,33 @@ body.lock {
 
 .liquidation .liquidation__head .liquidation__title {
   max-width: 600px;
-  padding: 10px 0 15px;
-}
-
-.liquidation .liquidation__head .liquidation__subtitle {
-  max-width: 600px;
-  padding-bottom: 30px;
-  font-size: 18px;
-  line-height: 28px;
-  color: #666666;
+  padding: 10px 0 30px;
 }
 
 .liquidation .liquidation__list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  -webkit-column-gap: 60px;
+     -moz-column-gap: 60px;
+          column-gap: 60px;
+  row-gap: 0;
 }
 
 .liquidation .liquidation__item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 25px;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(114, 134, 216, 0.06);
-  border: 1px solid rgba(114, 134, 216, 0.15);
-  -webkit-transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
-  transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
-  transition: transform 0.3s, box-shadow 0.3s;
-  transition: transform 0.3s, box-shadow 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(114, 134, 216, 0.15);
 }
 
-.liquidation .liquidation__item:hover {
-  -webkit-transform: translateY(-4px);
-      -ms-transform: translateY(-4px);
-          transform: translateY(-4px);
-  -webkit-box-shadow: 0 8px 30px rgba(114, 134, 216, 0.12);
-          box-shadow: 0 8px 30px rgba(114, 134, 216, 0.12);
+.liquidation .liquidation__item:nth-last-child(-n+2) {
+  border-bottom: none;
 }
 
 .liquidation .liquidation__number {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  font-size: 18px;
+  padding-top: 3px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1;
   color: #7286d8;
@@ -406,8 +388,8 @@ body.lock {
 }
 
 .liquidation .liquidation__content h3 {
-  margin: 0 0 12px;
-  font-size: 21px;
+  margin: 0 0 8px;
+  font-size: 20px;
   line-height: 1.3;
   font-weight: 600;
   color: #404040;
@@ -416,29 +398,28 @@ body.lock {
 .liquidation .liquidation__content p {
   margin: 0;
   font-size: 16px;
-  line-height: 28px;
+  line-height: 24px;
   color: #666666;
 }
 
 .liquidation .liquidation__notice {
-  margin-top: 50px;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(114, 134, 216, 0.06);
-  border: 1px solid rgba(114, 134, 216, 0.15);
+  margin: 35px 0 0;
+  padding: 22px 25px;
+  border-left: 3px solid #7286d8;
+  background: rgba(114, 134, 216, 0.05);
 }
 
 .liquidation .liquidation__notice .liquidation__notice-title {
-  margin-bottom: 15px;
-  font-size: 21px;
+  margin-bottom: 10px;
+  font-size: 18px;
   font-weight: 600;
   color: #404040;
 }
 
 .liquidation .liquidation__notice p {
-  margin: 0 0 15px;
+  margin: 0 0 10px;
   font-size: 16px;
-  line-height: 28px;
+  line-height: 24px;
   color: #666666;
 }
 
@@ -650,7 +631,7 @@ body.lock {
 }
 
 .advantages .advantages__item .advantages__item-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   color: #404040;
   margin-bottom: 15px;
@@ -672,7 +653,7 @@ body.lock {
 }
 
 .feedback .feedback__head .feedback__subtitle {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 28px;
   color: #666666;
   max-width: 600px;
@@ -949,6 +930,18 @@ body.lock {
     margin: 0 auto;
   }
 
+  .liquidation .liquidation__item {
+    padding: 20px 0;
+  }
+
+  .liquidation .liquidation__item:nth-last-child(-n+2) {
+    border-bottom: 1px solid rgba(114, 134, 216, 0.15);
+  }
+
+  .liquidation .liquidation__item:last-child {
+    border-bottom: none;
+  }
+
   .certificates .certificates__head {
     max-width: 450px;
     width: 100%;
@@ -1000,23 +993,18 @@ body.lock {
     padding: 80px 0 0;
   }
 
-  .liquidation .liquidation__item {
-    padding: 22px;
-    gap: 18px;
-  }
-
   .liquidation .liquidation__content h3 {
     font-size: 18px;
   }
 
   .liquidation .liquidation__content p {
-    font-size: 15px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 22px;
   }
 
   .liquidation .liquidation__notice {
-    margin-top: 30px;
-    padding: 22px;
+    margin-top: 25px;
+    padding: 18px 20px;
   }
 
   .certificates .certificates__item {
