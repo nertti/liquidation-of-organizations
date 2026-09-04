@@ -926,7 +926,7 @@ body.lock {
 
   .liquidation .liquidation__list {
     grid-template-columns: 1fr;
-    max-width: 900px;
+    max-width: 450px;
     margin: 0 auto;
   }
 
@@ -940,6 +940,12 @@ body.lock {
 
   .liquidation .liquidation__item:last-child {
     border-bottom: none;
+  }
+
+  .liquidation .liquidation__notice {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
   }
 
   .certificates .certificates__head {
@@ -969,6 +975,11 @@ body.lock {
     max-width: 450px;
     width: 100%;
     margin: 0 auto;
+  }
+
+  .feedback .feedback__form {
+    width: 100%;
+    max-width: 450px;
   }
 
   .contact-me .contact-me__head {
