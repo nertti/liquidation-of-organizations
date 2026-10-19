@@ -1,6 +1,7 @@
 
 let project_folder = 'docs';
 let source_folder = '.src';
+let swiper_folder = require('path').dirname(require.resolve('swiper'));
 
 let path = {
     build: {
@@ -9,6 +10,7 @@ let path = {
         js: project_folder + '/js/',
         img: project_folder + '/img/',
         fonts: project_folder + '/fonts/',
+        php: project_folder + '/',
     },
     src: {
         html: [source_folder + '/*.html', '!' + source_folder + '/_*.html'],
@@ -16,12 +18,14 @@ let path = {
         js: source_folder + '/js/script.js',
         img: source_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
         fonts: source_folder + '/fonts/*.ttf',
+        php: source_folder + '/ajax/**/*.php',
     },
     watch: {
         html:source_folder + '/**/*.html',
         css: source_folder + '/scss/**/*.scss',
         js: source_folder + '/js/**/*.js',
         img: source_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
+        php: source_folder + '/ajax/**/*.php',
     },
     clean: './' + project_folder + '/'
 }
@@ -51,7 +55,15 @@ function html() {
     return src(path.src.html)
         .pipe(fileinclude())
         .pipe(docs(path.build.html))
+        .pipe(rename({ extname: '.php' }))
+        .pipe(docs(path.build.html))
         .pipe(browsersync.stream())
+}
+
+function php() {
+    return src(path.src.php, { base: source_folder })
+        .pipe(docs(path.build.php))
+        .pipe(browsersync.stream());
 }
 
 function css() {
@@ -95,12 +107,12 @@ function js() {
 }
 
 function vendorJs() {
-    return src('node_modules/swiper/swiper-bundle.min.js')
+    return src(swiper_folder + '/swiper-bundle.min.js')
         .pipe(docs(path.build.js));
 }
 
 function vendorCss() {
-    return src('node_modules/swiper/swiper-bundle.min.css')
+    return src(swiper_folder + '/swiper-bundle.min.css')
         .pipe(docs(path.build.css));
 }
 
@@ -117,13 +129,14 @@ function watchFiles(params) {
     gulp.watch([path.watch.css],css);
     gulp.watch([path.watch.js],js);
     gulp.watch([path.watch.img],images);
+    gulp.watch([path.watch.php],php);
 }
 
 function clean(params) {
     return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, html, images, vendor));
+let build = gulp.series(clean, gulp.parallel(js, css, html, php, images, vendor));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.vendor = vendor;
@@ -131,6 +144,7 @@ exports.images = images;
 exports.js = js;
 exports.css = css;
 exports.html = html;
+exports.php = php;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;

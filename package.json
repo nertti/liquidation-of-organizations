@@ -4,6 +4,9 @@
   "description": "description",
   "main": "index.html",
   "scripts": {
+    "build": "gulp build",
+    "dev": "gulp",
+    "serve": "php -S 127.0.0.1:8000 -t docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jec vorobeiii and dani kasin",
