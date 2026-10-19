@@ -1,6 +1,4 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
-
 // Защита: обрабатываем только POST-запросы
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     http_response_code(403);
@@ -8,15 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit;
 }
 
-// Получаем и очищаем данные из формы
-foreach (['name', 'phone', 'email', 'org_type', 'message'] as $field) {
-    if (isset($_POST[$field]) && !is_string($_POST[$field])) {
-        http_response_code(400);
-        echo json_encode(["status" => "error", "message" => "Некорректные данные формы"]);
-        exit;
-    }
-}
+// Настройка заголовков ответа JSON
+header('Content-Type: application/json; charset=utf-8');
 
+// Получаем и очищаем данные из формы
 $name     = isset($_POST['name']) ? trim(strip_tags($_POST['name'])) : '';
 $phone    = isset($_POST['phone']) ? trim(strip_tags($_POST['phone'])) : '';
 $email    = isset($_POST['email']) ? trim(strip_tags($_POST['email'])) : '';
@@ -30,18 +23,6 @@ if (empty($name) || empty($phone)) {
     exit;
 }
 
-if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo json_encode(["status" => "error", "message" => "Укажите корректный Email"]);
-    exit;
-}
-
-if ($org_type !== '' && !in_array($org_type, ['ООО', 'ОАО', 'ОДО', 'ЗАО', 'ИП'], true)) {
-    http_response_code(400);
-    echo json_encode(["status" => "error", "message" => "Укажите корректный тип организации"]);
-    exit;
-}
-
 // --- НАСТРОЙКИ ПОЧТЫ ---
 //$to        = "dneretin01@gmail.com";
 $to        = "80447406357y@gmail.com";
@@ -49,18 +30,13 @@ $subject   = "Новая заявка на ликвидацию ($org_type)";
 $fromName  = "Лендинг Ликвидация";
 $fromEmail = "info@likvidacia-rb.com";
 // Формируем HTML-текст письма
-$safeName = htmlspecialchars($name, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-$safePhone = htmlspecialchars($phone, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-$safeEmail = htmlspecialchars($email ?: 'Не указан', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-$safeOrgType = htmlspecialchars($org_type, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-$safeMessage = htmlspecialchars($message ?: 'Передано пустое сообщение', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $emailBody = "
     <h2>Новая заявка с сайта</h2>
-    <p><b>Имя:</b> {$safeName}</p>
-    <p><b>Телефон:</b> {$safePhone}</p>
-    <p><b>Email:</b> {$safeEmail}</p>
-    <p><b>Тип организации:</b> {$safeOrgType}</p>
-    <p><b>Сообщение:</b><br>" . nl2br($safeMessage) . "</p>
+    <p><b>Имя:</b> {$name}</p>
+    <p><b>Телефон:</b> {$phone}</p>
+    <p><b>Email:</b> " . ($email ?: 'Не указан') . "</p>
+    <p><b>Тип организации:</b> {$org_type}</p>
+    <p><b>Сообщение:</b><br>" . nl2br($message ?: 'Передано пустое сообщение') . "</p>
 ";
 
 // Заголовки для корректной кодировки UTF-8 и HTML

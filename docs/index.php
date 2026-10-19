@@ -34,24 +34,24 @@
 <body>
 <div class="wrapper">
     <header class="nav">
-    <div class="container">
-        <div class="nav__row">
-            <div class="nav__burger">
-                <span></span>
-            </div>
+        <div class="container">
+            <div class="nav__row">
+                <div class="nav__burger">
+                    <span></span>
+                </div>
 
-            <nav class="nav__menu">
-                <ul class="nav__list">
-                    <li class="nav_link" data-goto=".hi" title="Главная">Главная</li>
-                    <li class="nav_link" data-goto=".certificates" title="Сертификаты и дипломы">Сертификаты</li>
-                    <li class="nav_link" data-goto=".advantages" title="Преимущества">Преимущества</li>
-                    <li class="nav_link" data-goto=".feedback" title="Оставить заявку">Заявка</li>
-                    <li class="nav_link" data-goto=".contact-me" title="Контакты">Контакты</li>
-                </ul>
-            </nav>
+                <nav class="nav__menu">
+                    <ul class="nav__list">
+                        <li class="nav_link" data-goto=".hi" title="Главная">Главная</li>
+                        <li class="nav_link" data-goto=".certificates" title="Сертификаты и дипломы">Сертификаты</li>
+                        <li class="nav_link" data-goto=".advantages" title="Преимущества">Преимущества</li>
+                        <li class="nav_link" data-goto=".feedback" title="Оставить заявку">Заявка</li>
+                        <li class="nav_link" data-goto=".contact-me" title="Контакты">Контакты</li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <main class="main">
         <div class="hi">
@@ -264,7 +264,7 @@
                 </div>
             </div>
         </div>
-        <div class="feedback" id="feedback">
+        <div class="feedback" id="feedback" >
             <div class="container">
                 <div class="feedback__head">
                     <h2 class="name">Заявка</h2>
@@ -352,11 +352,11 @@
         </div>
     </main>
     <footer class="footer">
-    <div class="container">
-        <p class="footer__text">© 2026. Юридические услуги по ликвидации ООО и ИП. Самозанятый.</p>
-        <p class="footer__note">Информация на сайте не является публичной офертой.</p>
-    </div>
-</footer>
+        <div class="container">
+            <p class="footer__text">© 2026. Юридические услуги по ликвидации ООО и ИП. Самозанятый.</p>
+            <p class="footer__note">Информация на сайте не является публичной офертой.</p>
+        </div>
+    </footer>
 
 </div>
 <div class="certificates-modal" id="certificates-modal" aria-hidden="true">
@@ -369,5 +369,64 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/script.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Перехватываем отправку формы по её ID
+        $('#feedback-form').on('submit', function(e) {
+            // Железно блокируем перезагрузку страницы и открытие новых окон
+            e.preventDefault();
+
+            var $form = $(this);
+            var $submitBtn = $form.find('.feedback__submit');
+            var $statusText = $form.find('.feedback__status');
+
+            // Получаем и очищаем значения полей
+            var name = $.trim($('#name').val());
+            var phone = $.trim($('#phone').val());
+
+            // Простая валидация перед отправкой
+            if (name === '' || phone === '') {
+                $statusText.css('color', 'red').text('Пожалуйста, заполните поля Имя и Телефон.');
+                return false;
+            }
+
+            // Блокируем кнопку, чтобы избежать повторных кликов
+            $submitBtn.prop('disabled', true).text('Отправка...');
+            $statusText.text('');
+
+            // Отправляем AJAX-запрос на PHP-скрипт
+            $.ajax({
+                url: '/ajax/mail.php', // Убедитесь, что файл mail.php лежит именно здесь
+                type: 'POST',
+                data: $form.serialize(), // Кодирует все поля формы для PHP
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        $statusText.css('color', 'green').text('Спасибо за заявку, с вами свяжутся!');
+                        $form[0].reset(); // Очищаем форму при успешной отправке
+                    } else {
+                        $statusText.css('color', 'red').text(response.message || 'Ошибка отправки.');
+                    }
+                },
+                error: function(xhr) {
+                    $statusText.css('color', 'red');
+
+                    // Проверяем, вернул ли сервер понятную ошибку в формате JSON
+                    try {
+                        var errJson = JSON.parse(xhr.responseText);
+                        $statusText.text(errJson.message || 'Произошла ошибка при отправке.');
+                    } catch(e) {
+                        $statusText.text('Произошла ошибка сервера или неверный путь к mail.php.');
+                    }
+                },
+                complete: function() {
+                    // В любом случае возвращаем кнопку в исходное состояние
+                    $submitBtn.prop('disabled', false).text('Отправить заявку');
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
