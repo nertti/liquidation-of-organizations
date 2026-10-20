@@ -8,7 +8,7 @@
     <meta name="google-site-verification" content="bT2av8AM3rxEN_3PVSvSd-AbPAuaXLw9mBmspj-3z-Q" />
     <meta name="yandex-verification" content="d317ec985ead93e7" />
     <title>Ликвидация ООО в Могилёве и Могилёвской области — закрытие ИП</title>
-    <link rel="canonical" href="https://likvidacia-rb.com/likvidaciya-ooo-v-mogileve.html">
+    <link rel="canonical" href="https://likvidacia-rb.com/likvidaciya-ooo-v-mogileve.php">
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
 
@@ -350,8 +350,27 @@
     </main>
     <footer class="footer">
     <div class="container">
-        <p class="footer__text">© 2026. Юридические услуги по ликвидации ООО и ИП. Самозанятый.</p>
-        <p class="footer__note">Информация на сайте не является публичной офертой.</p>
+        <nav class="footer__nav" aria-label="Главная и региональные страницы">
+            <ul class="footer__links">
+                <li><a href="/likvidaciya-ooo-v-minske.php">Минск и Минская область</a></li>
+                <li><a href="/likvidaciya-ooo-v-grodno.php">Гродно и Гродненская область</a></li>
+                <li><a href="/likvidaciya-ooo-v-breste.php">Брест и Брестская область</a></li>
+                <li><a href="/likvidaciya-ooo-v-vitebske.php">Витебск и Витебская область</a></li>
+                <li><a href="/likvidaciya-ooo-v-gomele.php">Гомель и Гомельская область</a></li>
+                <li><a href="/likvidaciya-ooo-v-mogileve.php">Могилёв и Могилёвская область</a></li>
+            </ul>
+        </nav>
+        <div class="footer__bottom">
+            <div class="footer__legal">
+                <p class="footer__text">© 2026. Юридические услуги по ликвидации ООО и ИП. Самозанятый.</p>
+                <p class="footer__note">Информация на сайте не является публичной офертой.</p>
+            </div>
+            <a class="footer__developer" href="https://www.linkedin.com/in/nertti/" target="_blank" rel="noopener noreferrer"
+               aria-label="Разработка сайта — nertti.dev, профиль в LinkedIn">
+                <span class="footer__developer-label">Разработка сайта</span>
+                <img src="img/nertti-logo-black.svg" width="180" height="84" alt="nertti.dev" loading="lazy">
+            </a>
+        </div>
     </div>
 </footer>
 

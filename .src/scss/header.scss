@@ -33,7 +33,6 @@ body.lock {
     position: relative;
     display: flex;
     padding: 20px 0;
-    max-width: 900px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +52,6 @@ body.lock {
       }
     }
     @include laptop-S{
-      max-width: 450px;
       margin: 0 auto;
       padding: 10px 0;
     }

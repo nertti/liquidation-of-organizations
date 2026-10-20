@@ -47,9 +47,7 @@ let { src, dest: docs } = require('gulp'),
 
 function browserSync(params) {
     browsersync.init({
-        server: {
-            baseDir: './' + project_folder + '/'
-        },
+        proxy: 'http://127.0.0.1:8000',
         port: 3000,
         notify: false
     })
@@ -57,7 +55,6 @@ function browserSync(params) {
 function html() {
     return src(path.src.html)
         .pipe(fileinclude())
-        .pipe(docs(path.build.html))
         .pipe(rename({ extname: '.php' }))
         .pipe(docs(path.build.html))
         .pipe(browsersync.stream())
