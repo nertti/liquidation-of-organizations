@@ -8,6 +8,7 @@
     <meta name="google-site-verification" content="bT2av8AM3rxEN_3PVSvSd-AbPAuaXLw9mBmspj-3z-Q" />
     <meta name="yandex-verification" content="d317ec985ead93e7" />
     <title>Ликвидация ООО и ИП в Беларуси — юридическое сопровождение</title>
+    <link rel="canonical" href="https://likvidacia-rb.com/">
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
 
@@ -61,9 +62,7 @@
                         <h1 class="hi__title">Ликвидация ООО и ИП в Беларуси</h1>
                         <p class="hi__name">Ланская Юлия Леонидовна</p>
                         <p class="hi__desc">Начиная с 2008 года по настоящее время провожу процедуры ликвидации.</p>
-                        <p class="hi__desc">Почему я - потому что Вы получаете одного специалиста по всем вопросам
-                            ликвидации который несёт всю ответственность за все действия в период проведения процедуры
-                            ликвидации.</p>
+                        <p class="hi__desc">Почему я - потому что Вы получаете одного специалиста по всм вопросам ликвидации который несёт всю ответственность за все действия в период проведения процедуры ликвидации.</p>
                         <div class="button nav_link" data-goto=".feedback">
                             Получить консультацию
                         </div>
@@ -245,8 +244,7 @@
                     </div>
                     <div class="advantages__item">
                         <div class="advantages__item-title">ИП и ООО</div>
-                        <div class="advantages__item-text">Работаю с индивидуальными предпринимателями и обществами с
-                            ограниченной ответственностью — в том числе со сложными случаями.
+                        <div class="advantages__item-text">Работаю с индивидуальными предпринимателями и обществами с ограниченной ответственностью — в том числе со сложными случаями.
                         </div>
                     </div>
                     <div class="advantages__item">
@@ -270,8 +268,7 @@
                     <h2 class="name">Заявка</h2>
                     <div class="line"></div>
                     <h3 class="title feedback__title">Оставьте заявку на консультацию</h3>
-                    <p class="feedback__subtitle">Заполните форму — свяжусь с вами в ближайшее время, отвечу на вопросы
-                        и рассчитаю стоимость ликвидации.</p>
+                    <p class="feedback__subtitle">Заполните форму — свяжусь с вами в ближайшее время, отвечу на вопросы и рассчитаю стоимость ликвидации.</p>
                 </div>
                 <form class="feedback__form" id="feedback-form" novalidate>
                     <div class="feedback__row">
@@ -371,3 +368,4 @@
 <script src="js/script.min.js"></script>
 </body>
 </html>
+
